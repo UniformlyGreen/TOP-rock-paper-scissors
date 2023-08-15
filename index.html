@@ -16,7 +16,8 @@
 		
 		
 		let userWinCount = 0;
-		let compwinCount = 0;
+		let compWinCount = 0;
+		let numRounds;
 		
 	
 		function randomNumber(range){
@@ -33,51 +34,53 @@
 		}
 	
 	
-		function comparison(){
-		  let userChoice;
-		  while(!(userChoice.toLowerCase() == "rock") || 
-                        !(userChoice.toLowerCase() == "paper") ||
+		function getUserChoice(){
+		  let userChoice ="";
+		  while(!(userChoice.toLowerCase() == "rock") && 
+                        !(userChoice.toLowerCase() == "paper") &&
                         !(userChoice.toLowerCase() == "scissors")){
                         
                         userChoice = prompt("Please enter rock, paper, or scissors");
                         }
+                        
+                   return userChoice;
                         }
                         
-                 function determineWinner(user,computer){
-                 	if (user === "rock"){
+                 function determineWinner(userChoice,computerChoice){
+                 	if (userChoice === "rock"){
                  	
-                 		switch(computer){
+                 		switch(computerChoice){
                  		
                  			case "scissors": 
                  				userWinCount += 1;
-                 				alert("You win!");
+                 				alert("The computer chose scissors.\nYou win!");
                  				break;
                  			case "paper": 
-                 				computerWinCount += 1;
-                 				alert("You lose");
+                 				compWinCount += 1;
+                 				alert("The computer chose paper.\n You lose");
                  				break;
                  			case "rock":
-						alert("Tie!");
+						alert("The computer chose rock.\nTie!");
 						break;
 					default: alert("Something went wrong");
                  		
                  		} }
-                 	else if (user === "paper"){
+                 	else if (userChoice === "paper"){
                  	
                  	
                  	
-                 		switch(computer){
+                 		switch(computerChoice){
                  		
                  			case "scissors": 
-                 				computerWinCount += 1;
-                 				alert("You lose");
+                 				compWinCount += 1;
+                 				alert("The computer chose scissors.\nYou lose");
                  				break;
                  			case "rock": 
                  				userWinCount += 1;
-                 				alert("You win!");
+                 				alert("The computer chose rock.\nYou win!");
                  				break;
                  			case "paper":
-						alert("Tie!");
+						alert("The computer chose paper.\nTie!");
 						break;
 					default: alert("Something went wrong");
                  		
@@ -91,18 +94,18 @@
                  	else {
                  	
                  	
-                 		switch(computer){
+                 		switch(computerChoice){
                  		
                  			case "rock": 
-                 				computerWinCount += 1;
-                 				alert("You lose");
+                 				compWinCount += 1;
+                 				alert("The computer chose rock.\nYou lose");
                  				break;
                  			case "paper": 
                  				userWinCount += 1;
-                 				alert("You win!");
+                 				alert("The computer chose paper.\nYou win!");
                  				break;
                  			case "scissors":
-						alert("Tie!");
+						alert("The computer chose scissors.\nTie!");
 						break;
 					default: alert("Something went wrong");
                  		
@@ -115,7 +118,50 @@
                  	
                  	}
                  
+                 function playRound(){
                  
+                 	let compChoice = getComputerChoice();
+                 	let userChoice = getUserChoice().toLowerCase();
+                 	console.log(`Computer chose ${compChoice}`);
+                 	console.log(`User chose ${userChoice}`);
+                 	determineWinner(userChoice,compChoice);
+                 
+                 }
+                 
+                 
+                 function playGame(){
+                 
+                 	
+                 	while(!((typeof numRounds) == 'number')){
+                 	
+                 	 numRounds = parseInt(prompt("How many rounds would you like to play? "));
+                 	 
+                 	 console.log(typeof numRounds);
+                 	
+                 	}
+                 	for(i = 0; i < numRounds; i++){
+                 	
+                 		playRound();
+                 	
+                 	}
+                 
+                 
+                 	if(userWinCount > compWinCount){
+                 	
+                 		alert(`You have won ${userWinCount}/${numRounds} rounds. The computer has won ${compWinCount}/${numRounds} rounds.\nYou win! `);
+                 	
+                 	}
+                 	else if(userWinCount < compWinCount){
+                 	
+                 		alert(`You have won ${userWinCount}/${numRounds} rounds. The computer has won ${compWinCount}/${numRounds} rounds.\nYou lose! `);
+                 	}
+                 	
+                 	else{
+                 	
+                 		alert(`You have tied with the computer ${userWinCount} times`);
+                 	
+                 	}
+                 }
                
 
 		
