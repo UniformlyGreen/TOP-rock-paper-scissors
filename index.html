@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+
+  <head>
+  	<meta charset="utf-8">
+  	<title>Rock Paper Scissors</title>
+  	
+  	
+  </head>
+
+
+  <body>
+	<script>
+		
+		
+		let userWinCount = 0;
+		let compwinCount = 0;
+		
+	
+		function randomNumber(range){
+		
+		return Math.floor(Math.random() * range);
+		
+		}
+	
+		function getComputerChoice(){
+		let choiceArray = ["rock","paper","scissors"];
+		return choiceArray[randomNumber(choiceArray.length)];
+		
+		
+		}
+	
+	
+		function comparison(){
+		  let userChoice;
+		  while(!(userChoice.toLowerCase() == "rock") || 
+                        !(userChoice.toLowerCase() == "paper") ||
+                        !(userChoice.toLowerCase() == "scissors")){
+                        
+                        userChoice = prompt("Please enter rock, paper, or scissors");
+                        }
+                        }
+                        
+                 function determineWinner(user,computer){
+                 	if (user === "rock"){
+                 	
+                 		switch(computer){
+                 		
+                 			case "scissors": 
+                 				userWinCount += 1;
+                 				alert("You win!");
+                 				break;
+                 			case "paper": 
+                 				computerWinCount += 1;
+                 				alert("You lose");
+                 				break;
+                 			case "rock":
+						alert("Tie!");
+						break;
+					default: alert("Something went wrong");
+                 		
+                 		} }
+                 	else if (user === "paper"){
+                 	
+                 	
+                 	
+                 		switch(computer){
+                 		
+                 			case "scissors": 
+                 				computerWinCount += 1;
+                 				alert("You lose");
+                 				break;
+                 			case "rock": 
+                 				userWinCount += 1;
+                 				alert("You win!");
+                 				break;
+                 			case "paper":
+						alert("Tie!");
+						break;
+					default: alert("Something went wrong");
+                 		
+                 		}
+                 	
+                 		
+                 	
+                 	}
+                 	
+                 	
+                 	else {
+                 	
+                 	
+                 		switch(computer){
+                 		
+                 			case "rock": 
+                 				computerWinCount += 1;
+                 				alert("You lose");
+                 				break;
+                 			case "paper": 
+                 				userWinCount += 1;
+                 				alert("You win!");
+                 				break;
+                 			case "scissors":
+						alert("Tie!");
+						break;
+					default: alert("Something went wrong");
+                 		
+                 		}
+                 	
+                 	
+                 	
+                 	
+                 	}
+                 	
+                 	}
+                 
+                 
+               
+
+		
+                        
+                        
+		  
+	
+	</script>
+  </body>
+
+
+
+</html>
