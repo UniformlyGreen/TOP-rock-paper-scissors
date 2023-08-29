@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang =en-us">
+
+
+<head>
+
+</head>
+
+<body>
+	
+	
+<div id="text-box">
+	
+	Please choose rock, paper, or scissors to start a game!
+</div>
+
+<div id="main-container">
+	
+	
+	<button id="rock">Rock</button>
+	
+	
+	
+	
+	<button id="paper">Paper</button>
+	
+	
+	
+	<button id="scissors">Scissors</button>
+<div>
+
+
+<script>
+let playerChoices = document.querySelectorAll("button");
+let choices = ["rock","paper","scissors"];
+let userChoice = "";
+let comChoice;
+let text = document.getElementById("text-box");
+let userWinCount = 0;
+let comWinCount = 0;
+
+
+for(let i = 0; i < playerChoices.length; i++){//Adds Event listener to each button to determine player choice
+		playerChoices[i].addEventListener("click",()=>{ userChoice = playerChoices[i].id});
+		playerChoices[i].addEventListener("click",playRound);
+	} 
+
+
+
+function makeComputerChoice(){
+
+return choices[Math.floor(Math.random() * 3)];
+
+}
+
+
+
+/*function reset(){
+	userChoice = "";
+	comChoice = "";
+	text.textContent ="Please make a choice to start the game!";
+	
+}*/
+
+
+function playRound(){
+	
+	comChoice = makeComputerChoice();
+		
+		text.textContent = `You chose ${userChoice}, and the computer chose ${comChoice}.`;
+		
+		if(userChoice == "rock"){  //Compares userChoice with comChoice
+			
+			if(comChoice == "scissors"){
+				text.textContent += "\nYou win!"
+				userWinCount += 1;
+				
+				
+			}
+			else if (comChoice == "paper"){
+				text.textContent += "\nYou lose!";
+				
+				comWinCount += 1;
+				
+				
+			}
+			
+			else{
+				text.textContent += "\nYou tied!";
+				
+			}
+			
+			
+		}
+		
+		if(userChoice == "scissors"){
+			
+			if(comChoice == "paper"){
+				text.textContent += "\nYou win!"
+				userWinCount += 1;
+				
+				
+			}
+			else if (comChoice == "rock"){
+				text.textContent += "\nYou lose!";
+				
+				comWinCount += 1;
+				
+				
+			}
+			
+			else{
+				text.textContent += "\nYou tied!";
+				
+			}
+			
+			
+		}
+		
+		if(userChoice == "paper"){
+			
+			if(comChoice == "rock"){
+				text.textContent += "\nYou win!"
+				userWinCount += 1;
+				
+				
+			}
+			else if (comChoice == "scissors"){
+				text.textContent += "\nYou lose!";
+				
+				comWinCount += 1;
+				
+				
+			}
+			
+			else{
+				text.textContent += "\nYou tied!";
+				
+			}
+			
+			
+		}
+		
+		
+	}
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+
+
+
+
+
+	
+
+
+
+</script>
+
+
+</body>
+
+
+</html>
