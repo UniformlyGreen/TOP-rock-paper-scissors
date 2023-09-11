@@ -3,7 +3,9 @@ let compWins = 0;
 
 
 
-
+let restartBtn = document.createElement("button");
+restartBtn.textContent ="Play Again?";
+restartBtn.addEventListener("click",playAgain);
 
 
 
@@ -54,11 +56,13 @@ resultBox.textContent = "Please choose rock, paper, or scissors";
 let scoreBox = document.createElement("div");
 
 
-
+let question = document.createElement("div");
+question.textContent = "How many rounds would you like to play?";
 
 
 
 function start(){
+	bod.appendChild(question);
 	bod.appendChild(roundsBox);
 	
 }
@@ -74,6 +78,7 @@ function determineRounds(e){
 function changeScreen(){
 	
 bod.removeChild(roundsBox);
+bod.removeChild(question);
 bod.appendChild(choiceBox);
 bod.appendChild(resultBox);
 bod.appendChild(scoreBox);
@@ -113,6 +118,8 @@ function playRound(e){
 			resultBox.textContent = `You tied all ${numRounds} rounds.`
 			
 		}
+		
+		bod.appendChild(restartBtn);
 	}
 
 
@@ -199,6 +206,24 @@ function compareChoices(user,comp){
 	
 }
 
+
+function playAgain(){
+	numRounds = 0;
+	userWins = 0;
+	compWins = 0;
+	roundsPlayed=0;
+	userChoice = "";
+	compChoice = "";
+	scoreBox.textContent ="";
+	resultBox.textContent = "Please choose rock, paper, or scissors";
+	bod.removeChild(restartBtn);
+	//bod.removeChild(choiceBox);
+	bod.removeChild(scoreBox);
+	bod.removeChild(resultBox)
+	bod.appendChild(roundsBox)
+	bod.appendChild(question);
+	start();
+}
 
 
 
